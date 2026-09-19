@@ -1,17 +1,24 @@
-import { Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import ApiError from "../utils/api-error";
 
-const errorMiddlleware = (error: Error | ApiError, res: Response) => {
+const errorMiddleware = (
+  error: Error | ApiError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   if (error instanceof ApiError) {
-    res.status(error.statusCode).json({
+    return res.status(error.statusCode).json({
       success: false,
       message: error.message,
     });
-    return;
   }
-  res.status(500).json({
+
+  return res.status(500).json({
     success: false,
-    message: `Internal server error ${error.message}`,
+    message: `Internal server error: ${error.message || "Something went wrong"}`,
   });
 };
-export default errorMiddlleware;
+
+export default errorMiddleware;
+

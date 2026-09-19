@@ -18,6 +18,7 @@ const profileSchema = new Schema<Iprofile>(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     role: {
       type: String,
