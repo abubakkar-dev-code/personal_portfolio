@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import ApiError from "../utils/api-error";
 import Profile from "../models/profile.model";
 import ApiResponse from "../utils/api-response";
+import Project from "../models/project.model";
 
 export const createProfile = async (
   req: Request,
@@ -95,6 +96,24 @@ export const updateProfile = async (
     return res
       .status(200)
       .json(new ApiResponse("profile updated successfully", profile));
+  } catch (error) {
+    next(error);
+  }
+};
+export const deleteProject = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { projectId } = req.params;
+    const project = await Project.findByIdAndDelete(projectId);
+    if (!project) {
+      throw new ApiError(404, "Project not found");
+    }
+    return res
+      .status(200)
+      .json(new ApiResponse("Project deleted successfully", project));
   } catch (error) {
     next(error);
   }
