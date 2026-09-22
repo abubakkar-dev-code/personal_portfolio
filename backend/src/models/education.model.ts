@@ -25,4 +25,4 @@ const educationSchema = new Schema({
   },
 });
 const Education = mongoose.model("Education", educationSchema);
-export default Education;
+export default Education
