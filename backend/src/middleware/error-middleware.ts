@@ -5,7 +5,7 @@ const errorMiddleware = (
   error: Error | ApiError,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   if (error instanceof ApiError) {
     return res.status(error.statusCode).json({
@@ -21,4 +21,3 @@ const errorMiddleware = (
 };
 
 export default errorMiddleware;
-

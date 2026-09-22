@@ -6,6 +6,8 @@ import categoryRouter from "./routes/category.routes";
 import projectRouter from "./routes/project.routes";
 import experienceRouter from "./routes/experience.route";
 import educationRouter from "./routes/education.routes";
+import errorMiddleware from "./middleware/error-middleware";
+import fileUploadsRouter from "./routes/file.uploads.routes";
 
 const app = express();
 app.use(express.json());
@@ -15,5 +17,7 @@ app.use("/api/skill", skillRouter);
 app.use("/api/projects", projectRouter);
 app.use("/api/experience", experienceRouter);
 app.use("/api/education", educationRouter);
+app.use("/api/uploads", fileUploadsRouter);
 app.use("/not-found", notFound);
+app.use(errorMiddleware);
 export default app;
