@@ -9,10 +9,13 @@ const contactSchema = new Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
+    },
+    contact: {
+      type: Number,
     },
     message: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true },
