@@ -73,7 +73,7 @@ export default function OrbitVisual() {
   );
 
   return (
-    <div className="relative w-full max-w-[430px] aspect-square mx-auto flex items-center justify-center">
+    <div className="relative w-full max-w-107.5 aspect-square mx-auto flex items-center justify-center">
       {/* Central Ambient Glow */}
       <div
         className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/20 blur-2xl"
