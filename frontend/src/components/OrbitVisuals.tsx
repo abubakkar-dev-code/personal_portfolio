@@ -1,7 +1,7 @@
 const orbitConfig = [
   {
     ring: 1,
-    radius: 75,
+    radius: 90,
     duration: 16,
     reverse: false,
     angle: 0,
@@ -12,7 +12,7 @@ const orbitConfig = [
   },
   {
     ring: 1,
-    radius: 75,
+    radius: 90,
     duration: 16,
     reverse: false,
     angle: 180,
@@ -23,7 +23,7 @@ const orbitConfig = [
   },
   {
     ring: 2,
-    radius: 115,
+    radius: 135,
     duration: 24,
     reverse: true,
     angle: 60,
@@ -34,7 +34,7 @@ const orbitConfig = [
   },
   {
     ring: 2,
-    radius: 115,
+    radius: 135,
     duration: 24,
     reverse: true,
     angle: 240,
@@ -45,7 +45,7 @@ const orbitConfig = [
   },
   {
     ring: 3,
-    radius: 155,
+    radius: 180,
     duration: 32,
     reverse: false,
     angle: 110,
@@ -56,7 +56,7 @@ const orbitConfig = [
   },
   {
     ring: 3,
-    radius: 155,
+    radius: 180,
     duration: 32,
     reverse: false,
     angle: 290,
@@ -71,12 +71,16 @@ export default function OrbitVisual() {
   const uniqueRadii = Array.from(
     new Set(orbitConfig.map((item) => item.radius)),
   );
+
   return (
-    <div className="relative w-full max-w-90 aspect-square mx-auto flex items-center justify-center">
+    <div className="relative w-full max-w-[430px] aspect-square mx-auto flex items-center justify-center">
+      {/* Central Ambient Glow */}
       <div
-        className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/20 blur-2xl"
+        className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/20 blur-2xl"
         style={{ animation: "pulse-slow 4s ease-in-out infinite" }}
       />
+
+      {/* Orbit Rings matching exact radii */}
       {uniqueRadii.map((radius) => (
         <div
           key={radius}
@@ -84,7 +88,11 @@ export default function OrbitVisual() {
           style={{ width: `${radius * 2}px`, height: `${radius * 2}px` }}
         />
       ))}
-      <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500 shadow-[0_0_20px_5px_rgba(139,92,246,0.8)]" />
+
+      {/* Center Core Dot */}
+      <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500 shadow-[0_0_22px_5px_rgba(139,92,246,0.8)]" />
+
+      {/* Orbiting Badges */}
       {orbitConfig.map((item, i) => (
         <div
           key={i}
@@ -93,24 +101,26 @@ export default function OrbitVisual() {
             animation: `${item.reverse ? "orbit-reverse" : "orbit"} ${item.duration}s linear infinite`,
           }}
         >
+          {/* Static Offset to Ring Radius and Angle */}
           <div
             className="absolute left-0 top-0"
             style={{
               transform: `rotate(${item.angle}deg) translateX(${item.radius}px) rotate(-${item.angle}deg)`,
             }}
           >
+            {/* Counter-rotation to keep badge upright */}
             <div
               style={{
                 animation: `${item.reverse ? "orbit" : "orbit-reverse"} ${item.duration}s linear infinite`,
               }}
             >
-              <div className="pointer-events-auto -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card/90 backdrop-blur-md px-3 py-1 shadow-md transition-transform hover:scale-110 hover:border-violet-500">
+              <div className="pointer-events-auto -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card/90 backdrop-blur-md px-3.5 py-1.5 shadow-md transition-transform hover:scale-110 hover:border-violet-500">
                 <span
-                  className={`flex h-5 w-5 items-center justify-center rounded-md text-[11px] font-bold ${item.iconBg} ${item.iconColor}`}
+                  className={`flex h-5.5 w-5.5 items-center justify-center rounded-md text-[11px] font-bold ${item.iconBg} ${item.iconColor}`}
                 >
                   {item.icon}
                 </span>
-                <span className="text-xs font-medium text-primary">
+                <span className="text-xs font-semibold text-primary">
                   {item.label}
                 </span>
               </div>

@@ -1,8 +1,17 @@
 import { MdEmail } from "react-icons/md";
 import OrbitVisual from "../../components/OrbitVisuals";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Moon } from "lucide-react";
 
 const Hero = () => {
+  const contactIcons = [
+    { icon: <FaGithub />, path: "https://github.com/abubakkar-dev-code" },
+    {
+      icon: <FaLinkedin />,
+      path: "https://www.linkedin.com/in/abubakkar-a-a-692504267/",
+    },
+    { icon: <MdEmail />, path: "abubakkarm620@gmail.com" },
+  ];
   return (
     <div className="mt-14">
       <div className="w-11/12 mx-auto px-14 py-8 flex flex-col lg:flex lg:flex-row">
@@ -27,19 +36,15 @@ const Hero = () => {
               <span> ⤓ </span>Download
             </button>
           </div>
-          <div className="mt-8 flex gap-14 px-3">
-            <div className="px-2 py-2 rounded-full border-2">
-              <FaGithub />
-            </div>
-            <div className="px-2 py-2 rounded-full border-2">
-              <FaLinkedin />
-            </div>
-            <div className="px-2 py-2 rounded-full border-2">
-              <MdEmail />
-            </div>
+          <div className="mt-9 flex gap-10 px-3">
+            {contactIcons.map((item) => (
+              <a href={item.path} className="px-2 py-2 rounded-full border-2">
+                {item.icon}
+              </a>
+            ))}
           </div>
         </div>
-        <div className="flex-1 mt-2">
+        <div className="flex-1 mt-1">
           <div>
             <OrbitVisual />
           </div>
