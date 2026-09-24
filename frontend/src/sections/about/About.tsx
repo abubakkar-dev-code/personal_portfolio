@@ -65,9 +65,15 @@ const About = () => {
             intelligent and user-friendly products.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <p className="py-3 px-4 border-2 rounded-2xl border-border">Problem Solver</p>
-            <p className="py-3 px-4 border-2 rounded-2xl border-border">Quick Learner</p>
-            <p className="py-3 px-4 border-2 rounded-2xl border-border">Team Player</p>
+            <p className="py-3 px-4 border-2 rounded-2xl border-border">
+              Problem Solver
+            </p>
+            <p className="py-3 px-4 border-2 rounded-2xl border-border">
+              Quick Learner
+            </p>
+            <p className="py-3 px-4 border-2 rounded-2xl border-border">
+              Team Player
+            </p>
           </div>
         </div>
         <div className="hidden lg:block w-px bg-border/70"></div>
