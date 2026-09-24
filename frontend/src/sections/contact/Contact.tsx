@@ -54,8 +54,6 @@ const Contact = () => {
               </div>
             </div>
           ))}
-
-          {/* Send Message card */}
           <a
             href={`mailto:${EMAIL}`}
             className="group relative overflow-hidden bg-linear-to-br from-violet-600/15 via-[#0D0C19] to-[#0D0C19] border border-violet-600/30 rounded-2xl px-6 py-5 flex items-center gap-4 hover:border-violet-600/70 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
