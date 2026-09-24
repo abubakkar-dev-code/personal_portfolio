@@ -12,7 +12,7 @@ const Hero = () => {
     { icon: <MdEmail />, path: "mailto:abubakkarm620@gmail.com" },
   ];
   return (
-    <div className="mt-14">
+    <div className="mt-6">
       <div className="w-11/12 mx-auto px-4 sm:px-6 lg:px-10 py-8 flex flex-col lg:flex lg:flex-row gap-10 lg:gap-4">
         <div className="lg:flex-[1.2] sm:flex sm:flex-col gap-3 min-w-0">
           <div className="py-2 px-8 border border-border w-fit rounded-full">
